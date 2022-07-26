@@ -20,6 +20,11 @@ export default function App() {
         <Route path="Orders" element={<Orders />} />
         <Route path="Profile" element={<Profile />} />
         <Route path="Product/:pid" element={<Product />} />
+        <Route path="admin/*">
+          <Route path="Users" element={<h1>admin-users</h1>} />
+          <Route path="Products" element={<h1>admin-Products</h1>} />
+          <Route path="Inventory" element={<h1>admin-Inventory</h1>} />
+        </Route>
         <Route path="*" element={<Errorpage />} />
       </Routes>
     </BrowserRouter>
