@@ -1,16 +1,25 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  Link,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 export default function App() {
   return (
     <BrowserRouter>
       <Header />
       <Routes>
         <Route path="" element={<Home />} />
+        <Route path="Home" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="Signup" element={<Signup />} />
         <Route path="Cart" element={<Cart />} />
         <Route path="Orders" element={<Orders />} />
         <Route path="Profile" element={<Profile />} />
+        <Route path="Product/:pid" element={<Product />} />
         <Route path="*" element={<Errorpage />} />
       </Routes>
     </BrowserRouter>
@@ -18,6 +27,12 @@ export default function App() {
 }
 
 function Header() {
+  const navigate = useNavigate();
+  const handleClick = (e) => {
+    let pageName = e.target.innerHTML; // Login
+    let fullPath = '/' + pageName; // /Login
+    navigate(fullPath);
+  };
   return (
     <header>
       <Link to="/">home</Link>
@@ -26,7 +41,18 @@ function Header() {
       <Link to="/Cart">Cart</Link>
       <Link to="/Orders">Orders</Link>
       <Link to="/Profile">Profile</Link>
-      <Link to="/Errorpage">Errorpage</Link>
+      <Link to="/Product/1">Product-1</Link>
+      <Link to="/Product/2">Product-2</Link>
+      <Link to="/Product/3">Product-3</Link>
+      <Link to="/Product/4">Product-4</Link>
+      <Link to="/Product/5">Product-5</Link>
+
+      <button onClick={handleClick}>home</button>
+      <button onClick={handleClick}>Login</button>
+      <button onClick={handleClick}>Signup</button>
+      <button onClick={handleClick}>Cart</button>
+      <button onClick={handleClick}>Orders</button>
+      <button onClick={handleClick}>Profile</button>
     </header>
   );
 }
@@ -38,3 +64,8 @@ const Cart = () => <div>Cart</div>;
 const Orders = () => <div>Orders</div>;
 const Profile = () => <div>Profile</div>;
 const Errorpage = () => <div>Errorpage</div>;
+const Product = () => {
+  const params = useParams();
+  // console.log(useParams());
+  return <div>Product-{params.pid}</div>;
+};
