@@ -5,13 +5,13 @@ export default function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="" element={<h1>home</h1>} />
-        <Route path="login" element={<h1>Login</h1>} />
-        <Route path="Signup" element={<h1>Signup</h1>} />
-        <Route path="Cart" element={<h1>Cart</h1>} />
-        <Route path="Orders" element={<h1>Orders</h1>} />
-        <Route path="Profile" element={<h1>Profile</h1>} />
-        <Route path="Errorpage" element={<h1>Errorpage</h1>} />
+        <Route path="" element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="Signup" element={<Signup />} />
+        <Route path="Cart" element={<Cart />} />
+        <Route path="Orders" element={<Orders />} />
+        <Route path="Profile" element={<Profile />} />
+        <Route path="*" element={<Errorpage />} />
       </Routes>
     </BrowserRouter>
   );
@@ -30,3 +30,11 @@ function Header() {
     </header>
   );
 }
+
+const Home = () => <div>Home</div>;
+const Login = () => <div>Login</div>;
+const Signup = () => <div>Signup</div>;
+const Cart = () => <div>Cart</div>;
+const Orders = () => <div>Orders</div>;
+const Profile = () => <div>Profile</div>;
+const Errorpage = () => <div>Errorpage</div>;
